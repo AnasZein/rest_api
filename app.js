@@ -5,12 +5,12 @@ const dotenv = require("dotenv").config();
 const logger = require("./middlewares/logger");
 const UsersRoutes = require("./routes/users.route");
 
-const server = "127.0.0.1:27017";
+const server = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@cluster0.ino4voh.mongodb.net`;
 const database = "rest_api";
 const port = process.env.PORT || 3000;
 
 mongoose
-  .connect(`mongodb://${server}/${database}`)
+  .connect(`${server}/${database}`)
   .then(() => {
     console.log(`connected on ${database} database`);
   })
